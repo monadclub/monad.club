@@ -1,0 +1,28 @@
+{
+	"name": "api",
+	"version": "0.0.0",
+	"description": "monad.club GraphQL API",
+	"license": "ISC",
+	"main": "lib/graphql.ts",
+	"directories": {
+		"lib": "lib"
+	},
+	"files": [ "lib" ],
+	"scripts": {
+		"dev": "backpack dev",
+		"build": "backpack build",
+		"now-build": "tsc -p tsconfig.json"
+	},
+	"dependencies": {
+		"@monad.club/utils": "^0.0.0",
+		"apollo-server": "^2.3.1",
+		"graphql": "^14.1.1",
+		"graphql-tag": "^2.10.1"
+	},
+	"devDependencies": {
+		"@types/node": "^10.12.18",
+		"backpack-core": "^0.8.3",
+		"ts-loader": "^5.3.3",
+		"typescript": "^3.2.2"
+	}
+}

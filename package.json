@@ -1,0 +1,15 @@
+{
+	"name": "monad.club",
+	"version": "0.0.1",
+	"description": "A community jobs platform",
+	"license": "MIT",
+	"private": true,
+	"workspaces": [ "packages/*" ],
+	"devDependencies": {
+		"lerna": "^3.10.5"
+	},
+	"scripts": {
+		"start": "lerna run --parallel dev",
+		"build:www": "lerna run build"
+	}
+}

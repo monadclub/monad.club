@@ -1,0 +1,19 @@
+{
+	"name": "@monad.club/utils",
+	"version": "0.0.0",
+	"description": "Shared utilities",
+	"author": "Henry <henry@kirkness.com>",
+	"license": "ISC",
+	"main": "build/utils.js",
+	"directories": {
+		"lib": "lib"
+	},
+	"files": [ "lib" ],
+	"scripts": {
+		"dev": "tsc -p tsconfig.json -w --preserveWatchOutput",
+		"build": "tsc -p tsconfig.json"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
