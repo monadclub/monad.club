@@ -7,8 +7,8 @@
 	"env": {},
 	"builds": [
 		{ "src": "./packages/www/static/*", "use": "@now/static" },
-		{ "src": "./packages/www/next.config.js", "use": "@now/next" },
-		{ "src": "./packages/api/lib/api.ts", "use": "@now/node-server" }
+		{ "src": "./packages/www/next.config.js", "use": "@now/next@canary" },
+		{ "src": "./packages/api/lib/api.ts", "use": "@now/node-server@canary" }
 	],
 	"routes": [
 		{ "src": "^/graphql", "dest": "/packages/api/lib/api.ts" },

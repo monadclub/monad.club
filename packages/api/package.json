@@ -1,5 +1,5 @@
 {
-	"name": "api",
+	"name": "@monad.club/api",
 	"version": "0.0.0",
 	"description": "monad.club GraphQL API",
 	"license": "ISC",
