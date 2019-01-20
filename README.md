@@ -7,7 +7,7 @@
 - [x] Monorepo project with lerna
 - [x] Deployment with a single command (`now`) on now v2
 - [x] Shared modules between API + WWW etc.
-- [ ] Shared TypeScript config
+- [X] Shared TypeScript config
 - [x] Running with a single command
 - [x] Next.js Web App
 - [x] GraphQL Backend

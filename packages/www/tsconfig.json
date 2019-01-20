@@ -1,20 +1,9 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "jsx": "preserve",
-    "lib": ["dom", "es2017"],
     "types": ["node"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "removeComments": false,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "esnext"
+    "module": "esnext"
   }
 }
