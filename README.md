@@ -22,11 +22,11 @@
   - [ ] Every commit/PR should be previewable on `now` with a fresh seeded instance of the database
   - [ ] Seperate Org for monad.club on now
 - [ ] Shared lerna packages should be installable on now
-  - *Not sure if this is possible to now v2*
+  - **Not sure if this is possible to now v2**
 - [ ] Job queue with `bull` or similar
-  - *Not sure if this is possible to now v2*
+  - **Not sure if this is possible to now v2**
 - [ ] GraphQL subscriptions for chat (potentially not for MVP?)
-  - *Not sure if this is possible to now v2*
+  - **Not sure if this is possible to now v2**
 - [ ] Add redis for job queue + rate-limiting etc.
 
 ### Local environment
