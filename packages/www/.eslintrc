@@ -2,8 +2,25 @@
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint/eslint-plugin"],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
+  "overrides": [{
+    "files": ["./pages/**/*"]
+  }],
+  "rules": {
+    "react/jsx-filename-extension":  [1, { "extensions": [".tsx"] }]
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "commonjs": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
   }
 }

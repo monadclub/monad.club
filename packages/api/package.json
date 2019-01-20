@@ -13,7 +13,9 @@
 	"scripts": {
 		"dev": "backpack dev",
 		"build": "backpack build",
-		"now-build": "tsc -p tsconfig.json"
+		"now-build": "tsc -p tsconfig.json",
+		"lint": "eslint ./lib/*",
+		"lint:fix": "yarn lint --fix"
 	},
 	"dependencies": {
 		"@monad.club/databases": "^0.0.0",

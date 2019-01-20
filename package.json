@@ -10,6 +10,8 @@
 	},
 	"scripts": {
 		"start": "lerna run --parallel dev",
+		"lint": "lerna run lint",
+		"lint:fix": "lerna run lint:fix",
 		"build:www": "lerna run build",
 		"migrate": "lerna run migrate --scope=databases",
 		"seed": "lerna run seed --scope=databases"

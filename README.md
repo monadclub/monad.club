@@ -17,6 +17,7 @@
 - [ ] Testing environment and strategy for each package
 - [ ] Prettier
 - [ ] Eslint - with shared config
+- [ ] Codegen TypeScript defs for GraphQL and Postgres
 
 #### Whenever possible before release
 

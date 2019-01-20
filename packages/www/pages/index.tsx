@@ -14,6 +14,7 @@ const getHost = ({ req }: any) => {
     if (req.headers.host) return `https://${req.headers.host}/graphql`;
     return "/graphql";
   }
+
   return "http://localhost:4000";
 };
 

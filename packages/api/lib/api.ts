@@ -20,7 +20,7 @@ const server = new ApolloServer({
         } = await knex.raw(`SELECT 1 as one`);
         return row.one;
       },
-      hello: () => withEmoji("heya there")
+      hello: () => withEmoji(`heya there`)
     }
   }
 });
