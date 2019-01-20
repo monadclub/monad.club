@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = {
+module.exports = exports.default = {
 	client: 'postgresql',
 	connection: process.env.PG_CONNECTION_STRING,
 	pool: {

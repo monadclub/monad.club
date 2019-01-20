@@ -1,5 +1,5 @@
 {
-	"name": "@monad/databases",
+	"name": "@monad.club/databases",
 	"version": "0.0.0",
 	"description": "Postgres migrations, Knex instance and redis stuff.",
 	"homepage": "https://github.com/monadclub/monad.club#readme",
@@ -9,9 +9,7 @@
 		"lib": "lib",
 		"test": "__tests__"
 	},
-	"files": [
-		"lib"
-	],
+	"files": [ "lib" ],
 	"publishConfig": {
 		"access": "public"
 	},
@@ -20,6 +18,7 @@
 		"url": "git+https://github.com/monadclub/monad.club.git"
 	},
 	"scripts": {
+		"dev": "tsc -p tsconfig.json -w --preserveWatchOutput",
 		"migrate": "knex migrate:latest",
 		"seed": "knex seed:run"
 	},

@@ -15,6 +15,8 @@
 - [ ] Postgres
 - [ ] Server-side rendered Apollo GraphQL
 - [ ] Testing environment and strategy for each package
+- [ ] Prettier
+- [ ] Eslint - with shared config
 
 #### Whenever possible before release
 
