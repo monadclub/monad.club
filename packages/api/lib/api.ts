@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { ApolloServer } from 'apollo-server';
 import gql from 'graphql-tag';
 import { withEmoji } from '@monad.club/utils';

@@ -7,7 +7,9 @@
 	"directories": {
 		"lib": "lib"
 	},
-	"files": [ "lib" ],
+	"files": [
+		"lib"
+	],
 	"scripts": {
 		"dev": "backpack dev",
 		"build": "backpack build",
@@ -16,6 +18,7 @@
 	"dependencies": {
 		"@monad.club/utils": "^0.0.0",
 		"apollo-server": "^2.3.1",
+		"dotenv": "^6.2.0",
 		"graphql": "^14.1.1",
 		"graphql-tag": "^2.10.1"
 	},

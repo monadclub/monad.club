@@ -31,9 +31,30 @@
 
 ### Local environment
 
+#### dotenv
+
+Create a file called `.env` in `./packages/api/` and `./packages/databases/` with the following contents:
+
+```
+PG_CONNECTION_STRING=postgres://localhost/monadclub
+```
+
+#### Postgres
+
+- Install Postgres
+- Create the database with name `monadclub`
+
+#### Running the app
+
 ```sh
 # Install all workspace dependencies
 $ yarn
+
+# Migrate the database
+$ yarn migrate
+
+# Seed the database
+$ yarn seed
 
 # Run project in development mode
 $ yarn start

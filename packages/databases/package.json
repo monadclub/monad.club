@@ -1,0 +1,34 @@
+{
+	"name": "@monad/databases",
+	"version": "0.0.0",
+	"description": "Postgres migrations, Knex instance and redis stuff.",
+	"homepage": "https://github.com/monadclub/monad.club#readme",
+	"license": "ISC",
+	"main": "build/index.js",
+	"directories": {
+		"lib": "lib",
+		"test": "__tests__"
+	},
+	"files": [
+		"lib"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/monadclub/monad.club.git"
+	},
+	"scripts": {
+		"migrate": "knex migrate:latest",
+		"seed": "knex seed:run"
+	},
+	"bugs": {
+		"url": "https://github.com/monadclub/monad.club/issues"
+	},
+	"dependencies": {
+		"dotenv": "^6.2.0",
+		"knex": "^0.16.3",
+		"pg": "^7.8.0"
+	}
+}
