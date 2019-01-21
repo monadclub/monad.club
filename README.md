@@ -21,7 +21,9 @@
 - [ ] Add a CI to run linting and tests
 - [ ] API Structure
   - Had a look around this [API](https://github.com/spacexland/api) and im a big fan.
-  - [Graphql modules!](https://graphql-modules.com/docs/introduction/getting-started) 
+  - [Graphql modules?](https://graphql-modules.com/docs/introduction/getting-started) 
+- [ ] Use `debug` for all logging etc
+- [ ] Use [Graphql Log](https://github.com/withspectrum/graphql-log)
 
 #### Whenever possible before release
 
