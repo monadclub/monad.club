@@ -34,6 +34,7 @@
 - [ ] GraphQL subscriptions for chat (potentially not for MVP?)
   - **Not sure if this is possible to now v2**
 - [ ] Add redis for job queue + rate-limiting etc.
+- [ ] [Dataloaders](https://github.com/facebook/dataloader)
 
 ### Local environment
 
