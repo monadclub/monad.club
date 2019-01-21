@@ -1,0 +1,96 @@
+
+enum RemoteOptions {
+  REMOTE_ONLY
+  FLEXIBLE
+  ON_PREMISE
+}
+
+# Table
+enum EmploymentTypes {
+  CONTRACT
+  PERMENANT
+  BOTH
+}
+
+type Image {
+  # ...
+  id: ID!
+  secureUrl: String!
+}
+
+type JobSpec {
+  id: ID!
+  company: Company!
+  title: String!
+  roleType: RoleTypes!
+  remoteOption: RemoteOptions!
+  jobDescription: String!
+  employmentTypeId: ID!
+  contractLength: Int 
+  salaryLow: Float
+  salaryHigh: Float
+  dayRateLow: Float
+  dayRateHigh: Float
+  skills: [Skill]!
+  roleId: ID!
+  levelId: ID!
+  isPublished: Boolean!
+}
+
+type Candidate {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  bio: String
+  availibility: String!
+  dateOfBirth: Date!
+  remoteOption: RemoteOptions!
+  employmentType: EmploymentTypes!
+  salaryExpectation: Float 
+  dayRateExpectation: Float
+  githubId: String 
+  avatar: Image
+  skills: [CandidateSkill]!
+  blockedCompanies: [Company]
+  experiences: [Experience]
+  sideProjects: [SideProject]
+  contentLinks: [ContentLink]
+}
+
+type CandidateSkill {
+  skill: Skill!
+  yearsOfExperience: Float!
+}
+
+type Company {
+  jobSpecs: [JobSpec]
+}
+
+input PaginationInput {
+  limit: Int 
+  offset: Int
+}
+
+type Experience {}
+
+type SideProject {}
+
+type ContentLink {}
+
+type Skill {}
+
+type Role {}
+
+type Level {}
+
+type CompanyUser {}
+
+type Chat {}
+
+type Message {}
+
+type Query {
+  jobSpecs(pagination: PaginationInput)
+}
+
+type Mutation {}
