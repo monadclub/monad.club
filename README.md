@@ -12,12 +12,15 @@
 - [x] Next.js Web App
 - [x] GraphQL Backend
 - [x] All files watched in dev mode even shared libs
-- [ ] Postgres
+- [x] Postgres
 - [ ] Server-side rendered Apollo GraphQL
 - [ ] Testing environment and strategy for each package
-- [ ] Prettier
-- [ ] Eslint - with shared config
+- [x] Prettier
+- [x] Eslint
 - [ ] Codegen TypeScript defs for GraphQL and Postgres
+- [ ] Add a CI to run linting and tests
+- [ ] API Structure
+  - Had a look around this [API](https://github.com/spacexland/api) and im a big fan.
 
 #### Whenever possible before release
 
