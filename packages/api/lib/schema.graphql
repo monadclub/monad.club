@@ -22,7 +22,7 @@ type JobSpec {
   id: ID!
   company: Company!
   title: String!
-  roleType: RoleTypes!
+  roleType: ID!
   remoteOption: RemoteOptions!
   jobDescription: String!
   employmentTypeId: ID!
@@ -43,7 +43,7 @@ type Candidate {
   lastName: String!
   bio: String
   availibility: String!
-  dateOfBirth: Date!
+  # dateOfBirth: Date!
   remoteOption: RemoteOptions!
   employmentType: EmploymentTypes!
   salaryExpectation: Float 
@@ -71,26 +71,50 @@ input PaginationInput {
   offset: Int
 }
 
-type Experience {}
-
-type SideProject {}
-
-type ContentLink {}
-
-type Skill {}
-
-type Role {}
-
-type Level {}
-
-type CompanyUser {}
-
-type Chat {}
-
-type Message {}
-
-type Query {
-  jobSpecs(pagination: PaginationInput)
+type Experience {
+  id: ID!
 }
 
-type Mutation {}
+type SideProject {
+  id: ID!
+}
+
+type ContentLink {
+  id: ID!
+}
+
+type Skill {
+  id: ID!
+}
+
+type Role {
+  id: ID!
+}
+
+type Level {
+  id: ID!
+}
+
+type CompanyUser {
+  id: ID!
+}
+
+type Chat {
+  id: ID!
+}
+
+type Message {
+  id: ID!
+}
+
+input JobSpecInput {
+  title: String
+}
+
+type Query {
+  jobSpecs(pagination: PaginationInput): [JobSpec]
+}
+
+type Mutation {
+  createJobSpec(jobSpec: JobSpecInput): JobSpec
+}

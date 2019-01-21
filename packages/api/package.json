@@ -15,7 +15,8 @@
 		"build": "backpack build",
 		"now-build": "tsc -p tsconfig.json",
 		"lint": "eslint ./lib/*",
-		"lint:fix": "yarn lint --fix"
+		"lint:fix": "yarn lint --fix",
+		"codegen:graphql": "gql-gen --config codegen.yml"
 	},
 	"dependencies": {
 		"@monad.club/databases": "^0.0.0",
@@ -35,8 +36,10 @@
 		"eslint-config-prettier": "^3.6.0",
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-prettier": "^3.0.1",
+		"graphql-code-generator": "^0.16.0",
 		"prettier": "^1.16.0",
 		"ts-loader": "^5.3.3",
-		"typescript": "^3.2.2"
+		"typescript": "^3.2.2",
+		"graphql-codegen-typescript-common": "0.16.0"
 	}
 }
