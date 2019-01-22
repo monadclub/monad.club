@@ -4,24 +4,30 @@
 	"description": "monad.club Web App",
 	"license": "ISC",
 	"scripts": {
-		"dev": "next",
-    "build": "next build",
-    "lint": "eslint ./pages/*",
-    "lint:fix": "yarn lint --fix"
+		"dev": "DEBUG=monad:* DEBUG_HIDE_DATE=true DEBUG_COLORS=true next",
+		"build": "next build",
+		"lint": "eslint ./pages/*",
+		"lint:fix": "yarn lint --fix"
 	},
 	"dependencies": {
 		"@monad.club/utils": "^0.0.0",
 		"@zeit/next-typescript": "^1.1.1",
+		"apollo-boost": "^0.1.27",
 		"fork-ts-checker-webpack-plugin": "^0.5.2",
+		"graphql": "^14.1.1",
 		"isomorphic-unfetch": "^3.0.0",
+		"lodash": "^4.17.11",
 		"next": "^7.0.2",
 		"react": "^16.7.0",
+		"react-apollo": "^2.4.0",
 		"react-dom": "^16.7.0",
 		"typescript": "^3.2.2"
 	},
 	"devDependencies": {
-		"@types/react": "^16.7.20",
+		"@types/lodash": "^4.14.120",
+		"@types/next": "^7.0.6",
 		"@types/node": "^10.12.18",
+		"@types/react": "^16.7.20",
 		"@typescript-eslint/eslint-plugin": "^0.2.1",
 		"@typescript-eslint/parser": "^0.2.1",
 		"eslint": "^5.3.0",
