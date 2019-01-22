@@ -13,7 +13,7 @@
 - [x] GraphQL Backend
 - [x] All files watched in dev mode even shared libs
 - [x] Postgres
-- [ ] Server-side rendered Apollo GraphQL
+- [x] Server-side rendered Apollo GraphQL
 - [ ] Testing environment and strategy for each package
 - [x] Prettier
 - [x] Eslint
@@ -22,7 +22,7 @@
 - [ ] API Structure
   - Had a look around this [API](https://github.com/spacexland/api) and im a big fan.
   - [Graphql modules?](https://graphql-modules.com/docs/introduction/getting-started) 
-- [ ] Use `debug` for all logging etc
+- [x] Use `debug` for all logging etc
 - [ ] Use [Graphql Log](https://github.com/withspectrum/graphql-log)
 - [ ] Auth0 @Rigellute
 
