@@ -1,36 +1,18 @@
 import { ApolloServer } from "apollo-server";
-import gql from "graphql-tag";
-import { knex } from "@monad.club/databases";
-import { logGraphql, logInfo } from "@monad.club/utils";
-import createGraphQLLogger from "graphql-log";
+import dotenv from "dotenv";
+import { logInfo } from "@monad.club/utils";
+import schema from "./schema";
 
-require("dotenv").config();
+dotenv.config();
 
-const resolvers = {
-  Query: {
-    testDbConnection: async () => {
-      const {
-        rows: [row]
-      } = await knex.raw(`SELECT 1 as one`);
-      return row.one;
-    },
-    hello: () => `heya there`
-  }
-};
-
-const logExecutions = createGraphQLLogger({
-  logger: logGraphql
+const createContext = ({ req, ...context }: any) => ({
+  ...context,
+  req
 });
-logExecutions(resolvers);
 
 const server = new ApolloServer({
-  typeDefs: gql`
-    type Query {
-      testDbConnection: Int
-      hello: String
-    }
-  `,
-  resolvers
+  schema,
+  context: createContext
 });
 
 const port = process.env.PORT || 4000;
