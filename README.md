@@ -25,6 +25,7 @@
 - [x] Use `debug` for all logging etc
 - [x] Use [Graphql Log](https://github.com/withspectrum/graphql-log)
 - [ ] Auth0 @Rigellute
+- [ ] Create interim deployment script
 
 #### Whenever possible before release
 
