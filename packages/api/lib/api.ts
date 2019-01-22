@@ -2,8 +2,27 @@ import { ApolloServer } from "apollo-server";
 import gql from "graphql-tag";
 import { knex } from "@monad.club/databases";
 import { withEmoji } from "@monad.club/utils";
+import createGraphQLLogger from "graphql-log";
+import { logGraphql, logInfo } from "./utils/logger";
 
 require("dotenv").config();
+
+const resolvers = {
+  Query: {
+    testDbConnection: async () => {
+      const {
+        rows: [row]
+      } = await knex.raw(`SELECT 1 as one`);
+      return row.one;
+    },
+    hello: () => withEmoji(`heya there`)
+  }
+};
+
+const logExecutions = createGraphQLLogger({
+  logger: logGraphql
+});
+logExecutions(resolvers);
 
 const server = new ApolloServer({
   typeDefs: gql`
@@ -12,21 +31,10 @@ const server = new ApolloServer({
       hello: String
     }
   `,
-  resolvers: {
-    Query: {
-      testDbConnection: async () => {
-        const {
-          rows: [row]
-        } = await knex.raw(`SELECT 1 as one`);
-        return row.one;
-      },
-      hello: () => withEmoji(`heya there`)
-    }
-  }
+  resolvers
 });
 
 const port = process.env.PORT || 4000;
 server.listen(port).then(({ url }) => {
-  // eslint-disable-next-line no-console
-  console.log(`👋  GraphQL server started at ${url}`);
+  logInfo(`👋  GraphQL server started at ${url}`);
 });
