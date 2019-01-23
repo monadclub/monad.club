@@ -1,5 +1,5 @@
-import { ApolloServer } from "apollo-server";
 import dotenv from "dotenv";
+import { ApolloServer } from "apollo-server";
 import { logInfo } from "@monad.club/utils";
 import schema from "./schema";
 

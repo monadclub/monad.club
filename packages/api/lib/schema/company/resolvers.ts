@@ -1,10 +1,10 @@
 const resolvers = {
   Mutation: {
-    updateCandidate: () => null
+    updateCompany: () => null
   },
   Query: {
-    candidate: () => {},
-    candidates: () => {}
+    company: () => null,
+    companies: () => []
   }
 };
 

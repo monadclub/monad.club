@@ -1,20 +1,47 @@
 
-enum RemoteOptions {
-  REMOTE_ONLY
-  FLEXIBLE
-  ON_PREMISE
+
+type PaginatedSideProjects {
+  pageInfo: PageInfo!
+  edges: [SideProject]!
 }
 
-# Table
-enum EmploymentTypes {
-  CONTRACT
-  PERMENANT
-  BOTH
+type PaginatedExperiences {
+  pageInfo: PageInfo!
+  edges: [Experience]!
 }
 
-type Image {
-  # ...
+type PaginatedContentLinks {
+  pageInfo: PageInfo!
+  edges: [ContentLink]!
+}
+
+type PaginatedCompanies {
+  pageInfo: PageInfo!
+  edges: [Company]!
+}
+
+type PaginatedSkills {
+  pageInfo: PageInfo!
+  edges: [Company]!
+}
+
+type PaginatedJobSpecs {
+  pageInfo: PageInfo!
+  edges: [Company]!
+}
+
+input PaginationInput {
+  limit: Int
+  offset: Int
+}
+
+type CloudinaryImage {
   id: ID!
+  format: String!
+  height: Float!
+  width: Float!
+  publicId: String!
+  version: Int!
   secureUrl: String!
 }
 
@@ -37,38 +64,36 @@ type JobSpec {
   isPublished: Boolean!
 }
 
+type CandidateSkill {
+  skill: Skill!
+  yearsOfExperience: Float!
+}
+
 type Candidate {
   id: ID!
   firstName: String!
   lastName: String!
   bio: String
   availibility: String!
-  # dateOfBirth: Date!
+  dateOfBirth: Date!
   remoteOption: RemoteOptions!
   employmentType: EmploymentTypes!
   salaryExpectation: Float 
   dayRateExpectation: Float
-  githubId: String 
-  avatar: Image
-  skills: [CandidateSkill]!
-  blockedCompanies: [Company]
-  experiences: [Experience]
-  sideProjects: [SideProject]
-  contentLinks: [ContentLink]
-}
-
-type CandidateSkill {
-  skill: Skill!
-  yearsOfExperience: Float!
+  githubId: String
+  avatarImage: CloudinaryImage
+  # avatar(transform: CloudinaryTransform): String TODO: Returns a cloudinary string based on transformation
+  skills(page: PaginationInput!): PaginatedSkills
+  blockedCompanies(page: PaginationInput!): PaginatedCompanies
+  experiences(page: PaginationInput!): PaginatedExperiences
+  sideProjects(page: PaginationInput!): PaginatedSideProjects
+  contentLinks(page: PaginationInput!): PaginatedContentLinks
 }
 
 type Company {
-  jobSpecs: [JobSpec]
-}
-
-input PaginationInput {
-  limit: Int 
-  offset: Int
+  id: ID!
+  name: String!
+  jobSpecs(page: PaginationInput!): PaginatedJobSpecs
 }
 
 type Experience {
@@ -77,14 +102,23 @@ type Experience {
 
 type SideProject {
   id: ID!
+  title: String!
+  url: String!
+  startDate: Date!
+  endDate: Date
+  description: String!
 }
 
 type ContentLink {
   id: ID!
+  name: String!
+  icon: String!
+  url: String!
 }
 
 type Skill {
   id: ID!
+  name: String!
 }
 
 type Role {
