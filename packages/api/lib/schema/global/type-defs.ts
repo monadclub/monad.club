@@ -55,6 +55,23 @@ const typeDefs = gql`
   type Mutation {
     _empty: String
   }
+
+  # TODO: These are not global - should have seperate defs.
+  type Role {
+    id: ID!
+  }
+
+  type Level {
+    id: ID!
+  }
+
+  type Chat {
+    id: ID!
+  }
+
+  type Message {
+    id: ID!
+  }
 `;
 
 export default typeDefs;

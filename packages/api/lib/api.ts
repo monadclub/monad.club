@@ -2,13 +2,9 @@ import dotenv from "dotenv";
 import { ApolloServer } from "apollo-server";
 import { logInfo } from "@monad.club/utils";
 import schema from "./schema";
+import createContext from "./utils/create-context";
 
 dotenv.config();
-
-const createContext = ({ req, ...context }: any) => ({
-  ...context,
-  req
-});
 
 const server = new ApolloServer({
   schema,

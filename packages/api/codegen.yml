@@ -1,10 +1,12 @@
 overwrite: true
-schema: "./lib/schema.graphql"
+require:
+  - ts-node/register
+schema: "./lib/schema/index.ts"
+watch: true
 documents: null
 generates:
-  lib/generated/graphql.ts:
+  lib/generated/graphql.d.ts:
     plugins:
-      - "typescript-common"
-  ./graphql.schema.json:
-    plugins:
-      - "introspection"
+      - typescript-common
+      - typescript-server
+      - typescript-resolvers

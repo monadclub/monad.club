@@ -16,12 +16,13 @@
 		"now-build": "tsc -p tsconfig.json",
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "yarn lint --fix",
-		"codegen:graphql": "gql-gen --config codegen.yml"
+		"codegen:graphql": "gql-gen"
 	},
 	"dependencies": {
 		"@monad.club/databases": "^0.0.0",
 		"@monad.club/utils": "^0.0.0",
 		"apollo-server": "^2.3.1",
+		"dataloader": "^1.4.0",
 		"dotenv": "^6.2.0",
 		"graphql": "^14.1.1",
 		"graphql-iso-date": "^3.6.1",
@@ -45,9 +46,12 @@
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-prettier": "^3.0.1",
 		"graphql-code-generator": "^0.16.0",
-		"graphql-codegen-typescript-common": "0.16.0",
+		"graphql-codegen-typescript-common": "^0.16.0",
+		"graphql-codegen-typescript-resolvers": "^0.16.0",
+		"graphql-codegen-typescript-server": "^0.16.0",
 		"prettier": "^1.16.0",
 		"ts-loader": "^5.3.3",
+		"ts-node": "^8.0.1",
 		"typescript": "^3.2.2"
 	}
 }

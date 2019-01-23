@@ -9,6 +9,12 @@ const schema = gql`
   type Company {
     id: ID!
     name: String!
+    summary: String
+    description: String
+    logoImage: CloudinaryImage
+    # logo(transform: CloudinaryTransform): String TODO: Returns a cloudinary string based on transformation
+    url: String
+    isVerified: Boolean
     jobSpecs(page: PageInput!): PaginatedJobSpecs
   }
 

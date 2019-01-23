@@ -1,4 +1,5 @@
 const resolvers = {
+  Skill: {},
   Mutation: {},
   Query: {}
 };

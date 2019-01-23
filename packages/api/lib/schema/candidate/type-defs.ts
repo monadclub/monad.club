@@ -9,6 +9,7 @@ const schema = gql`
   input UpdateCandidateInput {
     id: ID!
     firstName: String!
+    blockedCompanies: [ID]
   }
 
   type Candidate {
