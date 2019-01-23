@@ -19,7 +19,7 @@
 - [x] Eslint
 - [ ] Codegen TypeScript defs for GraphQL and Postgres
 - [ ] Add a CI to run linting and tests @Rigellute
-- [ ] API Structure
+- [ ] [API Structure](https://github.com/apollographql/graphql-tools/blob/master/designs/connectors.md)
 - [x] Use `debug` for all logging etc
 - [x] Use [Graphql Log](https://github.com/withspectrum/graphql-log)
 - [ ] Auth0 @Rigellute

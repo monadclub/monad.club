@@ -13,6 +13,12 @@ const typeDefs = gql`
     # ...
   }
 
+  type PageInfo {
+    limit: Int!
+    offset: Int!
+    totalItems: Int!
+  }
+
   input PaginationInput {
     limit: Int
     offset: Int
