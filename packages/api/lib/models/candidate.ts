@@ -1,4 +1,5 @@
-const getById = () => {};
-const getPage = () => {};
+import { Candidate } from "../generated/graphql.d";
 
-export default { getById, getPage };
+export const getById = (id: string, ctx: any) => ctx.loaders.candidate.load(id);
+export const getPage = () => {};
+export const updateCandidate = (): Candidate => null as any;
