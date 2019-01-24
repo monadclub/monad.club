@@ -1,6 +1,6 @@
 import { updateCandidate, getById } from "../../models/candidate";
-import { MutationResolvers } from "../../generated/graphql.d";
-import { IContext } from "../../types/custom.d";
+import { MutationResolvers } from "../../generated/graphql";
+import { IContext } from "../../types/custom";
 
 const resolvers = {
   Mutation: {

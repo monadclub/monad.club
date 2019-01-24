@@ -1,3 +1,9 @@
+import {
+  GraphQLResolveInfo,
+  GraphQLScalarType,
+  GraphQLScalarTypeConfig
+} from "graphql";
+
 export type Maybe<T> = T | null;
 
 export interface PageInput {
@@ -375,12 +381,6 @@ export interface UpdateCompanyUserMutationArgs {
 // ====================================================
 
 export type Profile = Candidate | CompanyUser;
-
-import {
-  GraphQLResolveInfo,
-  GraphQLScalarType,
-  GraphQLScalarTypeConfig
-} from "graphql";
 
 export type Resolver<Result, Parent = {}, Context = {}, Args = {}> = (
   parent: Parent,
