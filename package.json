@@ -14,7 +14,10 @@
 		"lint": "lerna run lint",
 		"lint:fix": "lerna run lint:fix",
 		"build:www": "lerna run build",
-		"migrate": "lerna run migrate --scope=databases",
-		"seed": "lerna run seed --scope=databases"
+		"migrate": "lerna run migrate --scope=@monad.club/databases",
+		"rollback": "lerna run rollback --scope=@monad.club/databases",
+    "seed": "lerna run seed --scope=@monad.club/databases",
+    "codegen:graphql": "lerna run codegen:graphql --scope=@monad.club/api",
+    "codegen:pg": "lerna run codegen:graphql --scope=@monad.club/databases"
 	}
 }

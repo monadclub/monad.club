@@ -36,7 +36,7 @@ const schema = gql`
 
   extend type Query {
     candidate(id: ID!): Candidate
-    candidates(page: PageInput): PaginatedCandidates!
+    candidates(page: PageInput!): PaginatedCandidates!
   }
 
   extend type Mutation {

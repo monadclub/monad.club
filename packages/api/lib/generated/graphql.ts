@@ -1,13 +1,7 @@
-import {
-  GraphQLResolveInfo,
-  GraphQLScalarType,
-  GraphQLScalarTypeConfig
-} from "graphql";
-
 export type Maybe<T> = T | null;
 
 export interface PageInput {
-  limit?: Maybe<number>;
+  limit: number;
 
   offset?: Maybe<number>;
 }
@@ -64,7 +58,7 @@ export type Time = any;
 // ====================================================
 
 export interface Query {
-  me: Profile;
+  _empty?: Maybe<string>;
 
   jobSpec?: Maybe<JobSpec>;
 
@@ -97,6 +91,64 @@ export interface Query {
   contentLink?: Maybe<ContentLink>;
 
   contentLinks: PaginatedContentLinks;
+}
+
+export interface JobSpec {
+  id: string;
+}
+
+export interface PaginatedJobSpecs {
+  pageInfo: PageInfo;
+
+  edges: (Maybe<JobSpec>)[];
+}
+
+export interface PageInfo {
+  limit: number;
+
+  offset: number;
+
+  total: number;
+}
+
+export interface SideProject {
+  id: string;
+
+  title: string;
+
+  url: string;
+
+  startDate: Date;
+
+  endDate?: Maybe<Date>;
+
+  description: string;
+}
+
+export interface PaginatedSideProjects {
+  pageInfo: PageInfo;
+
+  edges: (Maybe<SideProject>)[];
+}
+
+export interface Experience {
+  id: string;
+}
+
+export interface PaginatedExperiences {
+  pageInfo: PageInfo;
+
+  edges: (Maybe<Experience>)[];
+}
+
+export interface Skill {
+  id: string;
+}
+
+export interface PaginatedSkills {
+  pageInfo: PageInfo;
+
+  edges: (Maybe<Skill>)[];
 }
 
 export interface Candidate {
@@ -153,24 +205,6 @@ export interface CloudinaryImage {
   secureUrl: string;
 }
 
-export interface PaginatedSkills {
-  pageInfo: PageInfo;
-
-  edges: (Maybe<Skill>)[];
-}
-
-export interface PageInfo {
-  limit: number;
-
-  offset: number;
-
-  totalItems: number;
-}
-
-export interface Skill {
-  id: string;
-}
-
 export interface PaginatedCompanies {
   pageInfo: PageInfo;
 
@@ -195,46 +229,6 @@ export interface Company {
   jobSpecs?: Maybe<PaginatedJobSpecs>;
 }
 
-export interface PaginatedJobSpecs {
-  pageInfo: PageInfo;
-
-  edges: (Maybe<JobSpec>)[];
-}
-
-export interface JobSpec {
-  id: string;
-}
-
-export interface PaginatedExperiences {
-  pageInfo: PageInfo;
-
-  edges: (Maybe<Experience>)[];
-}
-
-export interface Experience {
-  id: string;
-}
-
-export interface PaginatedSideProjects {
-  pageInfo: PageInfo;
-
-  edges: (Maybe<SideProject>)[];
-}
-
-export interface SideProject {
-  id: string;
-
-  title: string;
-
-  url: string;
-
-  startDate: Date;
-
-  endDate?: Maybe<Date>;
-
-  description: string;
-}
-
 export interface PaginatedContentLinks {
   pageInfo: PageInfo;
 
@@ -251,6 +245,12 @@ export interface ContentLink {
   url: string;
 }
 
+export interface PaginatedCandidates {
+  pageInfo: PageInfo;
+
+  edges: (Maybe<Candidate>)[];
+}
+
 export interface CompanyUser {
   id: string;
 
@@ -259,12 +259,6 @@ export interface CompanyUser {
   lastName?: Maybe<string>;
 
   company?: Maybe<Company>;
-}
-
-export interface PaginatedCandidates {
-  pageInfo: PageInfo;
-
-  edges: (Maybe<Candidate>)[];
 }
 
 export interface PaginatedCompanyUsers {
@@ -331,7 +325,7 @@ export interface CandidateQueryArgs {
   id: string;
 }
 export interface CandidatesQueryArgs {
-  page?: Maybe<PageInput>;
+  page: PageInput;
 }
 export interface CompaniesQueryArgs {
   page?: Maybe<PageInput>;
@@ -376,11 +370,11 @@ export interface UpdateCompanyUserMutationArgs {
   companyUser?: Maybe<UpdateCompanyUserInput>;
 }
 
-// ====================================================
-// Unions
-// ====================================================
-
-export type Profile = Candidate | CompanyUser;
+import {
+  GraphQLResolveInfo,
+  GraphQLScalarType,
+  GraphQLScalarTypeConfig
+} from "graphql";
 
 export type Resolver<Result, Parent = {}, Context = {}, Args = {}> = (
   parent: Parent,
@@ -433,7 +427,7 @@ export type DirectiveResolverFn<TResult, TArgs = {}, TContext = {}> = (
 
 export namespace QueryResolvers {
   export interface Resolvers<Context = {}, TypeParent = {}> {
-    me?: MeResolver<Profile, TypeParent, Context>;
+    _empty?: _EmptyResolver<Maybe<string>, TypeParent, Context>;
 
     jobSpec?: JobSpecResolver<Maybe<JobSpec>, TypeParent, Context>;
 
@@ -484,11 +478,11 @@ export namespace QueryResolvers {
     >;
   }
 
-  export type MeResolver<R = Profile, Parent = {}, Context = {}> = Resolver<
-    R,
-    Parent,
-    Context
-  >;
+  export type _EmptyResolver<
+    R = Maybe<string>,
+    Parent = {},
+    Context = {}
+  > = Resolver<R, Parent, Context>;
   export type JobSpecResolver<
     R = Maybe<JobSpec>,
     Parent = {},
@@ -576,7 +570,7 @@ export namespace QueryResolvers {
     Context = {}
   > = Resolver<R, Parent, Context, CandidatesArgs>;
   export interface CandidatesArgs {
-    page?: Maybe<PageInput>;
+    page: PageInput;
   }
 
   export type CompanyResolver<
@@ -628,6 +622,191 @@ export namespace QueryResolvers {
   export interface ContentLinksArgs {
     page?: Maybe<PageInput>;
   }
+}
+
+export namespace JobSpecResolvers {
+  export interface Resolvers<Context = {}, TypeParent = JobSpec> {
+    id?: IdResolver<string, TypeParent, Context>;
+  }
+
+  export type IdResolver<R = string, Parent = JobSpec, Context = {}> = Resolver<
+    R,
+    Parent,
+    Context
+  >;
+}
+
+export namespace PaginatedJobSpecsResolvers {
+  export interface Resolvers<Context = {}, TypeParent = PaginatedJobSpecs> {
+    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
+
+    edges?: EdgesResolver<(Maybe<JobSpec>)[], TypeParent, Context>;
+  }
+
+  export type PageInfoResolver<
+    R = PageInfo,
+    Parent = PaginatedJobSpecs,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type EdgesResolver<
+    R = (Maybe<JobSpec>)[],
+    Parent = PaginatedJobSpecs,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
+export namespace PageInfoResolvers {
+  export interface Resolvers<Context = {}, TypeParent = PageInfo> {
+    limit?: LimitResolver<number, TypeParent, Context>;
+
+    offset?: OffsetResolver<number, TypeParent, Context>;
+
+    total?: TotalResolver<number, TypeParent, Context>;
+  }
+
+  export type LimitResolver<
+    R = number,
+    Parent = PageInfo,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type OffsetResolver<
+    R = number,
+    Parent = PageInfo,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type TotalResolver<
+    R = number,
+    Parent = PageInfo,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
+export namespace SideProjectResolvers {
+  export interface Resolvers<Context = {}, TypeParent = SideProject> {
+    id?: IdResolver<string, TypeParent, Context>;
+
+    title?: TitleResolver<string, TypeParent, Context>;
+
+    url?: UrlResolver<string, TypeParent, Context>;
+
+    startDate?: StartDateResolver<Date, TypeParent, Context>;
+
+    endDate?: EndDateResolver<Maybe<Date>, TypeParent, Context>;
+
+    description?: DescriptionResolver<string, TypeParent, Context>;
+  }
+
+  export type IdResolver<
+    R = string,
+    Parent = SideProject,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type TitleResolver<
+    R = string,
+    Parent = SideProject,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type UrlResolver<
+    R = string,
+    Parent = SideProject,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type StartDateResolver<
+    R = Date,
+    Parent = SideProject,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type EndDateResolver<
+    R = Maybe<Date>,
+    Parent = SideProject,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type DescriptionResolver<
+    R = string,
+    Parent = SideProject,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
+export namespace PaginatedSideProjectsResolvers {
+  export interface Resolvers<Context = {}, TypeParent = PaginatedSideProjects> {
+    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
+
+    edges?: EdgesResolver<(Maybe<SideProject>)[], TypeParent, Context>;
+  }
+
+  export type PageInfoResolver<
+    R = PageInfo,
+    Parent = PaginatedSideProjects,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type EdgesResolver<
+    R = (Maybe<SideProject>)[],
+    Parent = PaginatedSideProjects,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
+export namespace ExperienceResolvers {
+  export interface Resolvers<Context = {}, TypeParent = Experience> {
+    id?: IdResolver<string, TypeParent, Context>;
+  }
+
+  export type IdResolver<
+    R = string,
+    Parent = Experience,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
+export namespace PaginatedExperiencesResolvers {
+  export interface Resolvers<Context = {}, TypeParent = PaginatedExperiences> {
+    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
+
+    edges?: EdgesResolver<(Maybe<Experience>)[], TypeParent, Context>;
+  }
+
+  export type PageInfoResolver<
+    R = PageInfo,
+    Parent = PaginatedExperiences,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type EdgesResolver<
+    R = (Maybe<Experience>)[],
+    Parent = PaginatedExperiences,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
+export namespace SkillResolvers {
+  export interface Resolvers<Context = {}, TypeParent = Skill> {
+    id?: IdResolver<string, TypeParent, Context>;
+  }
+
+  export type IdResolver<R = string, Parent = Skill, Context = {}> = Resolver<
+    R,
+    Parent,
+    Context
+  >;
+}
+
+export namespace PaginatedSkillsResolvers {
+  export interface Resolvers<Context = {}, TypeParent = PaginatedSkills> {
+    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
+
+    edges?: EdgesResolver<(Maybe<Skill>)[], TypeParent, Context>;
+  }
+
+  export type PageInfoResolver<
+    R = PageInfo,
+    Parent = PaginatedSkills,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type EdgesResolver<
+    R = (Maybe<Skill>)[],
+    Parent = PaginatedSkills,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
 }
 
 export namespace CandidateResolvers {
@@ -866,63 +1045,6 @@ export namespace CloudinaryImageResolvers {
   > = Resolver<R, Parent, Context>;
 }
 
-export namespace PaginatedSkillsResolvers {
-  export interface Resolvers<Context = {}, TypeParent = PaginatedSkills> {
-    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
-
-    edges?: EdgesResolver<(Maybe<Skill>)[], TypeParent, Context>;
-  }
-
-  export type PageInfoResolver<
-    R = PageInfo,
-    Parent = PaginatedSkills,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type EdgesResolver<
-    R = (Maybe<Skill>)[],
-    Parent = PaginatedSkills,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace PageInfoResolvers {
-  export interface Resolvers<Context = {}, TypeParent = PageInfo> {
-    limit?: LimitResolver<number, TypeParent, Context>;
-
-    offset?: OffsetResolver<number, TypeParent, Context>;
-
-    totalItems?: TotalItemsResolver<number, TypeParent, Context>;
-  }
-
-  export type LimitResolver<
-    R = number,
-    Parent = PageInfo,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type OffsetResolver<
-    R = number,
-    Parent = PageInfo,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type TotalItemsResolver<
-    R = number,
-    Parent = PageInfo,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace SkillResolvers {
-  export interface Resolvers<Context = {}, TypeParent = Skill> {
-    id?: IdResolver<string, TypeParent, Context>;
-  }
-
-  export type IdResolver<R = string, Parent = Skill, Context = {}> = Resolver<
-    R,
-    Parent,
-    Context
-  >;
-}
-
 export namespace PaginatedCompaniesResolvers {
   export interface Resolvers<Context = {}, TypeParent = PaginatedCompanies> {
     pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
@@ -1006,134 +1128,6 @@ export namespace CompanyResolvers {
   }
 }
 
-export namespace PaginatedJobSpecsResolvers {
-  export interface Resolvers<Context = {}, TypeParent = PaginatedJobSpecs> {
-    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
-
-    edges?: EdgesResolver<(Maybe<JobSpec>)[], TypeParent, Context>;
-  }
-
-  export type PageInfoResolver<
-    R = PageInfo,
-    Parent = PaginatedJobSpecs,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type EdgesResolver<
-    R = (Maybe<JobSpec>)[],
-    Parent = PaginatedJobSpecs,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace JobSpecResolvers {
-  export interface Resolvers<Context = {}, TypeParent = JobSpec> {
-    id?: IdResolver<string, TypeParent, Context>;
-  }
-
-  export type IdResolver<R = string, Parent = JobSpec, Context = {}> = Resolver<
-    R,
-    Parent,
-    Context
-  >;
-}
-
-export namespace PaginatedExperiencesResolvers {
-  export interface Resolvers<Context = {}, TypeParent = PaginatedExperiences> {
-    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
-
-    edges?: EdgesResolver<(Maybe<Experience>)[], TypeParent, Context>;
-  }
-
-  export type PageInfoResolver<
-    R = PageInfo,
-    Parent = PaginatedExperiences,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type EdgesResolver<
-    R = (Maybe<Experience>)[],
-    Parent = PaginatedExperiences,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace ExperienceResolvers {
-  export interface Resolvers<Context = {}, TypeParent = Experience> {
-    id?: IdResolver<string, TypeParent, Context>;
-  }
-
-  export type IdResolver<
-    R = string,
-    Parent = Experience,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace PaginatedSideProjectsResolvers {
-  export interface Resolvers<Context = {}, TypeParent = PaginatedSideProjects> {
-    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
-
-    edges?: EdgesResolver<(Maybe<SideProject>)[], TypeParent, Context>;
-  }
-
-  export type PageInfoResolver<
-    R = PageInfo,
-    Parent = PaginatedSideProjects,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type EdgesResolver<
-    R = (Maybe<SideProject>)[],
-    Parent = PaginatedSideProjects,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace SideProjectResolvers {
-  export interface Resolvers<Context = {}, TypeParent = SideProject> {
-    id?: IdResolver<string, TypeParent, Context>;
-
-    title?: TitleResolver<string, TypeParent, Context>;
-
-    url?: UrlResolver<string, TypeParent, Context>;
-
-    startDate?: StartDateResolver<Date, TypeParent, Context>;
-
-    endDate?: EndDateResolver<Maybe<Date>, TypeParent, Context>;
-
-    description?: DescriptionResolver<string, TypeParent, Context>;
-  }
-
-  export type IdResolver<
-    R = string,
-    Parent = SideProject,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type TitleResolver<
-    R = string,
-    Parent = SideProject,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type UrlResolver<
-    R = string,
-    Parent = SideProject,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type StartDateResolver<
-    R = Date,
-    Parent = SideProject,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type EndDateResolver<
-    R = Maybe<Date>,
-    Parent = SideProject,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type DescriptionResolver<
-    R = string,
-    Parent = SideProject,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
 export namespace PaginatedContentLinksResolvers {
   export interface Resolvers<Context = {}, TypeParent = PaginatedContentLinks> {
     pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
@@ -1186,6 +1180,25 @@ export namespace ContentLinkResolvers {
   > = Resolver<R, Parent, Context>;
 }
 
+export namespace PaginatedCandidatesResolvers {
+  export interface Resolvers<Context = {}, TypeParent = PaginatedCandidates> {
+    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
+
+    edges?: EdgesResolver<(Maybe<Candidate>)[], TypeParent, Context>;
+  }
+
+  export type PageInfoResolver<
+    R = PageInfo,
+    Parent = PaginatedCandidates,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+  export type EdgesResolver<
+    R = (Maybe<Candidate>)[],
+    Parent = PaginatedCandidates,
+    Context = {}
+  > = Resolver<R, Parent, Context>;
+}
+
 export namespace CompanyUserResolvers {
   export interface Resolvers<Context = {}, TypeParent = CompanyUser> {
     id?: IdResolver<string, TypeParent, Context>;
@@ -1215,25 +1228,6 @@ export namespace CompanyUserResolvers {
   export type CompanyResolver<
     R = Maybe<Company>,
     Parent = CompanyUser,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-}
-
-export namespace PaginatedCandidatesResolvers {
-  export interface Resolvers<Context = {}, TypeParent = PaginatedCandidates> {
-    pageInfo?: PageInfoResolver<PageInfo, TypeParent, Context>;
-
-    edges?: EdgesResolver<(Maybe<Candidate>)[], TypeParent, Context>;
-  }
-
-  export type PageInfoResolver<
-    R = PageInfo,
-    Parent = PaginatedCandidates,
-    Context = {}
-  > = Resolver<R, Parent, Context>;
-  export type EdgesResolver<
-    R = (Maybe<Candidate>)[],
-    Parent = PaginatedCandidates,
     Context = {}
   > = Resolver<R, Parent, Context>;
 }
@@ -1353,17 +1347,6 @@ export namespace RoleResolvers {
   >;
 }
 
-export namespace ProfileResolvers {
-  export interface Resolvers {
-    __resolveType: ResolveType;
-  }
-  export type ResolveType<
-    R = "Candidate" | "CompanyUser",
-    Parent = Candidate | CompanyUser,
-    Context = {}
-  > = TypeResolveFn<R, Parent, Context>;
-}
-
 /** Directs the executor to skip this field or fragment when the `if` argument is true. */
 export type SkipDirectiveResolver<Result> = DirectiveResolverFn<
   Result,
@@ -1410,30 +1393,29 @@ export interface TimeScalarConfig extends GraphQLScalarTypeConfig<Time, any> {
 
 export interface IResolvers<Context = {}> {
   Query?: QueryResolvers.Resolvers<Context>;
+  JobSpec?: JobSpecResolvers.Resolvers<Context>;
+  PaginatedJobSpecs?: PaginatedJobSpecsResolvers.Resolvers<Context>;
+  PageInfo?: PageInfoResolvers.Resolvers<Context>;
+  SideProject?: SideProjectResolvers.Resolvers<Context>;
+  PaginatedSideProjects?: PaginatedSideProjectsResolvers.Resolvers<Context>;
+  Experience?: ExperienceResolvers.Resolvers<Context>;
+  PaginatedExperiences?: PaginatedExperiencesResolvers.Resolvers<Context>;
+  Skill?: SkillResolvers.Resolvers<Context>;
+  PaginatedSkills?: PaginatedSkillsResolvers.Resolvers<Context>;
   Candidate?: CandidateResolvers.Resolvers<Context>;
   CloudinaryImage?: CloudinaryImageResolvers.Resolvers<Context>;
-  PaginatedSkills?: PaginatedSkillsResolvers.Resolvers<Context>;
-  PageInfo?: PageInfoResolvers.Resolvers<Context>;
-  Skill?: SkillResolvers.Resolvers<Context>;
   PaginatedCompanies?: PaginatedCompaniesResolvers.Resolvers<Context>;
   Company?: CompanyResolvers.Resolvers<Context>;
-  PaginatedJobSpecs?: PaginatedJobSpecsResolvers.Resolvers<Context>;
-  JobSpec?: JobSpecResolvers.Resolvers<Context>;
-  PaginatedExperiences?: PaginatedExperiencesResolvers.Resolvers<Context>;
-  Experience?: ExperienceResolvers.Resolvers<Context>;
-  PaginatedSideProjects?: PaginatedSideProjectsResolvers.Resolvers<Context>;
-  SideProject?: SideProjectResolvers.Resolvers<Context>;
   PaginatedContentLinks?: PaginatedContentLinksResolvers.Resolvers<Context>;
   ContentLink?: ContentLinkResolvers.Resolvers<Context>;
-  CompanyUser?: CompanyUserResolvers.Resolvers<Context>;
   PaginatedCandidates?: PaginatedCandidatesResolvers.Resolvers<Context>;
+  CompanyUser?: CompanyUserResolvers.Resolvers<Context>;
   PaginatedCompanyUsers?: PaginatedCompanyUsersResolvers.Resolvers<Context>;
   Mutation?: MutationResolvers.Resolvers<Context>;
   Chat?: ChatResolvers.Resolvers<Context>;
   Level?: LevelResolvers.Resolvers<Context>;
   Message?: MessageResolvers.Resolvers<Context>;
   Role?: RoleResolvers.Resolvers<Context>;
-  Profile?: ProfileResolvers.Resolvers<Context>;
   Date?: GraphQLScalarType;
   DateTime?: GraphQLScalarType;
   Time?: GraphQLScalarType;

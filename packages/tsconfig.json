@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "esnext"],
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "declaration": true,

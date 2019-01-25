@@ -21,12 +21,12 @@ const typeDefs = gql`
   type PageInfo {
     limit: Int!
     offset: Int!
-    totalItems: Int!
+    total: Int!
   }
 
   # Pagination input variable structure
   input PageInput {
-    limit: Int
+    limit: Int!
     offset: Int
   }
 
@@ -42,12 +42,14 @@ const typeDefs = gql`
   }
 
   # Requesting 'me' from the API will return one of the two
-  union Profile = Candidate | CompanyUser
+  # union Profile = Candidate | CompanyUser
 
   # Root Query will be extended in other files
   # Query can't be empty so this is just a dud
   type Query {
-    me: Profile!
+    _empty: String
+    # TODO: Once this is resolved: https://github.com/dotansimha/graphql-code-generator/pull/1194
+    # me: Profile!
   }
 
   # Root Mutation will be extended in other files

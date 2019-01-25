@@ -17,7 +17,7 @@
 - [ ] Testing environment and strategy for each package
 - [x] Prettier
 - [x] Eslint
-- [ ] Codegen TypeScript defs for GraphQL and Postgres
+- [x] Codegen TypeScript defs for GraphQL and Postgres
 - [ ] Add a CI to run linting and tests @Rigellute
 - [ ] [API Structure](https://github.com/apollographql/graphql-tools/blob/master/designs/connectors.md)
 - [x] Use `debug` for all logging etc
