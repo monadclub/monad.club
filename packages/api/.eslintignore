@@ -1,4 +1,4 @@
 node_modules
 build
 dist
-lib/generated/graphql.d.ts
+lib/generated/*.ts

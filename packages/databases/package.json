@@ -25,8 +25,8 @@
 		"rollback": "knex migrate:rollback && yarn codegen:pg",
 		"seed": "knex seed:run",
 		"lint": "eslint ./lib/*",
-    "lint:fix": "yarn lint --fix",
-    "codegen:pg": "schemats generate -c postgres://localhost/monadclub -s public -o lib/generated/postgres.ts"
+		"lint:fix": "yarn lint --fix",
+		"codegen:pg": "schemats generate -c postgres://localhost/monadclub -s public -o lib/generated/postgres.ts"
 	},
 	"bugs": {
 		"url": "https://github.com/monadclub/monad.club/issues"
@@ -45,6 +45,7 @@
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-prettier": "^3.0.1",
 		"prettier": "^1.16.0",
-		"schemats": "^3.0.3"
+		"schemats": "^3.0.3",
+		"sqlite3": "^4.0.6"
 	}
 }

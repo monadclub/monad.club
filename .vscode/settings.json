@@ -1,5 +1,11 @@
 {
   "eslint.autoFixOnSave": true,
+  "eslint.workingDirectories": [
+    "./packages/api", 
+    "./packages/www", 
+    "./packages/databases", 
+    "./packages/utils"
+  ],
   "eslint.validate": [
       "javascript",
       "javascriptreact",
