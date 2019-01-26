@@ -23,7 +23,6 @@
 - [x] Use `debug` for all logging etc
 - [x] Use [Graphql Log](https://github.com/withspectrum/graphql-log)
 - [ ] Auth0 @Rigellute
-- [ ] Create interim deployment script
 
 #### Whenever possible before release
 
@@ -38,6 +37,7 @@
   - **Not sure if this is possible to now v2**
 - [ ] Add redis for job queue + rate-limiting etc.
 - [ ] [Dataloaders](https://github.com/facebook/dataloader)
+- [ ] Create interim deployment script
 
 ### Local environment
 
