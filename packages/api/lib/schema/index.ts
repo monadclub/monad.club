@@ -2,9 +2,9 @@ import { makeExecutableSchema } from "graphql-tools";
 import { merge } from "lodash";
 import { logGraphql } from "@monad.club/utils";
 import createGraphQLLogger from "graphql-log";
-import * as candidate from "./candidate";
+import * as candidateProfile from "./candidate-profile";
 import * as company from "./company";
-import * as companyUser from "./company-user";
+import * as user from "./user";
 import * as global from "./global";
 import * as skill from "./skill";
 import * as experience from "./experience";
@@ -18,9 +18,9 @@ const resolvers = merge(
   experience.resolvers,
   sideProject.resolvers,
   skill.resolvers,
-  candidate.resolvers,
+  candidateProfile.resolvers,
   company.resolvers,
-  companyUser.resolvers,
+  user.resolvers,
   contentLink.resolvers
 );
 
@@ -30,9 +30,9 @@ const typeDefs = [
   sideProject.typeDefs,
   experience.typeDefs,
   skill.typeDefs,
-  candidate.typeDefs,
+  candidateProfile.typeDefs,
   company.typeDefs,
-  companyUser.typeDefs,
+  user.typeDefs,
   contentLink.typeDefs
 ];
 

@@ -1,6 +1,6 @@
 const resolvers = {
   Mutation: {
-    updateCompanyUser: () => null
+    updateUser: () => null
   },
   Query: {}
 };

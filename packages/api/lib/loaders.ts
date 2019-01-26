@@ -11,12 +11,17 @@ const createLoaderForTable = <ResultItemType>(tableName: string) =>
       ids
     );
     // Return an array of values for each id, even if null, in the order of the ids
-    return map(id => find({ id }, items) || null, ids) as Array<ResultItemType>;
+    return map(
+      id => find({ id: parseInt(id as string, 10) }, items) || null,
+      ids
+    ) as Array<ResultItemType>;
   });
 
 const getLoaders = () => ({
-  companyUser: createLoaderForTable<Database.companyUsers>("companyUsers"),
-  candidate: createLoaderForTable<Database.candidates>("candidates")
+  user: createLoaderForTable<Database.users>("users"),
+  candidateProfile: createLoaderForTable<Database.candidateProfiles>(
+    "candidateProfiles"
+  )
 });
 
 export default getLoaders;

@@ -1,5 +1,6 @@
 overwrite: true
-schema: http://localhost:4000/
+schema:
+  - ./lib/schema/*/type-defs.graphql
 documents: null
 generates:
   ./lib/generated/graphql.ts:

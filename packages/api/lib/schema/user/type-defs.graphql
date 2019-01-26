@@ -1,0 +1,28 @@
+
+type PaginatedUsers {
+  pageInfo: PageInfo!
+  edges: [User]!
+}
+
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  company: Company
+  candidateProfile: CandidateProfile
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+}
+
+extend type Query {
+  user(id: ID!): User
+  users(id: ID!): PaginatedUsers
+}
+
+extend type Mutation {
+  updateUser(user: UpdateUserInput): User
+}
+

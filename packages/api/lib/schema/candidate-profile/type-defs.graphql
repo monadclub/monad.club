@@ -1,0 +1,40 @@
+type PaginatedCandidateProfiles {
+  pageInfo: PageInfo!
+  edges: [CandidateProfile]!
+}
+
+input UpdateCandidateProfileInput {
+  blockedCompanies: [ID]
+  bio: String
+}
+
+type CandidateProfile {
+  id: ID!
+  bio: String
+  availibility: String!
+  dateOfBirth: Date!
+  remoteOption: RemoteOptions!
+  employmentType: EmploymentTypes!
+  salaryExpectation: Float
+  dayRateExpectation: Float
+  githubId: String
+  avatarImage: CloudinaryImage
+  # avatar(transform: CloudinaryTransform): String TODO: Returns a cloudinary string based on transformation
+  skills(page: PageInput!): PaginatedSkills
+  blockedCompanies(page: PageInput!): PaginatedCompanies
+  experiences(page: PageInput!): PaginatedExperiences
+  sideProjects(page: PageInput!): PaginatedSideProjects
+  contentLinks(page: PageInput!): PaginatedContentLinks
+  user: User!
+}
+
+extend type Query {
+  candidateProfile(id: ID!): CandidateProfile
+  candidateProfiles(page: PageInput!): PaginatedCandidateProfiles!
+}
+
+extend type Mutation {
+  updateCandidateProfile(
+    candidateProfile: UpdateCandidateProfileInput!
+  ): CandidateProfile!
+}

@@ -11,9 +11,9 @@
 		"lib"
 	],
 	"scripts": {
-		"dev": "DEBUG=monad:* DEBUG_HIDE_DATE=true DEBUG_COLORS=true backpack dev",
-		"build": "ncc build lib/api.ts -o build",
-		"now-build": "tsc -p tsconfig.json",
+		"dev": "DEBUG=monad:* DEBUG_HIDE_DATE=true DEBUG_COLORS=true concurrently 'backpack dev' 'gql-gen --watch'",
+		"build": "gql-gen && backpack build",
+		"now-build": "backpack build",
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "yarn lint --fix",
 		"codegen:graphql": "gql-gen",
@@ -44,6 +44,7 @@
 		"@typescript-eslint/eslint-plugin": "^1.0.0",
 		"@typescript-eslint/parser": "^1.0.0",
 		"backpack-core": "^0.8.3",
+		"concurrently": "^4.1.0",
 		"eslint": "^5.3.0",
 		"eslint-config-airbnb-base": "^13.1.0",
 		"eslint-config-prettier": "^3.6.0",

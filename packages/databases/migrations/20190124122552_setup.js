@@ -16,26 +16,17 @@ exports.up = knex =>
       table.timestamp("createdAt").defaultTo(knex.fn.now());
       table.timestamp("updatedAt").defaultTo(knex.fn.now());
     })
-    .createTable("candidates", table => {
+    .createTable("candidateProfiles", table => {
       table
         .increments("id")
         .index()
         .primary();
-      table
-        .string("email")
-        .unique()
-        .notNullable();
-      table.string("firstName").notNullable();
-      table.string("lastName").notNullable();
-      table.string("encryptedPassword").notNullable();
       table.string("bio");
       table.date("dateOfBirth");
       table.string("remoteOption");
       table.string("employmentType");
       table.float("salaryExpectation");
       table.float("dayRateExpectation");
-      table.integer("avatarImageId").references("images.id");
-
       table.timestamp("createdAt").defaultTo(knex.fn.now());
       table.timestamp("updatedAt").defaultTo(knex.fn.now());
     })
@@ -53,7 +44,7 @@ exports.up = knex =>
       table.timestamp("createdAt").defaultTo(knex.fn.now());
       table.timestamp("updatedAt").defaultTo(knex.fn.now());
     })
-    .createTable("companyUsers", table => {
+    .createTable("users", table => {
       table
         .increments("id")
         .index()
@@ -64,16 +55,18 @@ exports.up = knex =>
       table.string("encryptedPassword").notNullable();
       table.integer("avatarImageId").references("images.id");
       table.integer("companyId").references("companies.id");
+      table.integer("candidateProfileId").references("candidateProfiles.id");
       table.timestamp("createdAt").defaultTo(knex.fn.now());
       table.timestamp("updatedAt").defaultTo(knex.fn.now());
     })
-    .raw(addTimestamps, { table_name: "companyUsers" })
-    .raw(addTimestamps, { table_name: "candidates" })
+    .raw(addTimestamps, { table_name: "users" })
+    .raw(addTimestamps, { table_name: "candidateProfiles" })
     .raw(addTimestamps, { table_name: "companies" })
     .raw(addTimestamps, { table_name: "images" });
 
 exports.down = knex =>
   knex.schema
+    .dropTable("users")
     .dropTable("companies")
-    .dropTable("candidates")
+    .dropTable("candidateProfiles")
     .dropTable("images");

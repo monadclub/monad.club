@@ -27,7 +27,7 @@
 		"seed": "knex seed:run",
 		"lint": "eslint ./lib/*",
 		"lint:fix": "yarn lint --fix",
-		"codegen:pg": "schemats generate -c postgres://localhost/monadclub -s public -o lib/generated/postgres.ts"
+		"codegen:pg": "schemats generate -c postgres://localhost/monadclub -s public -o lib/generated/postgres.ts && yarn build"
 	},
 	"bugs": {
 		"url": "https://github.com/monadclub/monad.club/issues"

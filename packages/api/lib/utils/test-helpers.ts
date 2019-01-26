@@ -3,7 +3,7 @@ import { IContext, ID } from "../types/custom";
 import getLoaders from "../loaders";
 
 export const getTestContext = (userId: ID): IContext => ({
-  userId: userId || "1",
+  userId,
   loaders: getLoaders()
 });
 
