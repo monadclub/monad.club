@@ -1,9 +1,10 @@
 import getLoaders from "../loaders";
 import { PageInfo } from "../generated/graphql";
 
+export type ID = string | number;
+
 export interface IContext {
-  req: Request;
-  userId: string;
+  userId: ID;
   loaders: ReturnType<typeof getLoaders>;
 }
 

@@ -1,4 +1,4 @@
-import Dataloader from "dataloader";
+import * as Dataloader from "dataloader";
 import { map, find } from "lodash/fp";
 import { knex, Database } from "@monad.club/databases";
 

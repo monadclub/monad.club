@@ -7,8 +7,6 @@ export interface PageInput {
 }
 
 export interface UpdateCandidateInput {
-  id: string;
-
   firstName: string;
 
   blockedCompanies?: Maybe<(Maybe<string>)[]>;

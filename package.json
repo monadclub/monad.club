@@ -13,11 +13,13 @@
 		"start:api": "lerna run --scope=@monad.club/api dev",
 		"lint": "lerna run lint",
 		"lint:fix": "lerna run lint:fix",
-		"build:www": "lerna run build",
+		"build:www": "lerna run build --scope=@monad.club/www",
+		"build:databases": "lerna run build --scope=@monad.club/databases",
 		"migrate": "lerna run migrate --scope=@monad.club/databases",
 		"rollback": "lerna run rollback --scope=@monad.club/databases",
     "seed": "lerna run seed --scope=@monad.club/databases",
     "codegen:graphql": "lerna run codegen:graphql --scope=@monad.club/api",
-    "codegen:pg": "lerna run codegen:graphql --scope=@monad.club/databases"
+    "codegen:pg": "lerna run codegen:graphql --scope=@monad.club/databases",
+    "test:watch": "lerna run test:watch"
 	}
 }

@@ -6,12 +6,12 @@ const paginateQuery = async <R = any>(
   query: QueryBuilder,
   page: PageInput
 ): Promise<PaginatedResult<R>> => {
-  const [edges, [{ count: total }]] = await Promise.all([
+  const [edges, [{ total }]] = await Promise.all([
     query
       .clone()
       .limit(page.limit)
       .offset(page.offset || 0),
-    query.clone().count("*")
+    query.clone().count("* as total")
   ]);
 
   return {

@@ -1,10 +1,13 @@
 {
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint/eslint-plugin", "import"],
+  "plugins": ["@typescript-eslint/eslint-plugin", "import", "jest"],
   "rules": {
     "import/prefer-default-export": 0,
     "no-unused-vars": "off"
+  },
+  "env": {
+    "jest/globals": true
   },
   "settings": {
     "import/resolver": {

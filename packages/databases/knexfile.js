@@ -5,10 +5,11 @@ module.exports = exports.default = {
   // Use sqlite3 in test env
   test: {
     client: "sqlite3",
-    connection: ':memory:', 
+    connection: ":memory:",
+    useNullAsDefault: true
   },
 
-  developent: {
+  development: {
     client: "postgresql",
     connection: process.env.PG_CONNECTION_STRING,
     pool: {

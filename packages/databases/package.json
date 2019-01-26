@@ -21,6 +21,7 @@
 	},
 	"scripts": {
 		"dev": "tsc -p tsconfig.json -w --preserveWatchOutput",
+		"build": "tsc -p tsconfig.json",
 		"migrate": "knex migrate:latest && yarn codegen:pg",
 		"rollback": "knex migrate:rollback && yarn codegen:pg",
 		"seed": "knex seed:run",

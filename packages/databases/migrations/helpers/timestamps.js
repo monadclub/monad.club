@@ -1,4 +1,7 @@
-module.exports = /* SQL */ `
+module.exports =
+  process.env.NODE_ENV === "test"
+    ? "SELECT 1"
+    : `
   CREATE OR REPLACE FUNCTION update_updated_at()
   RETURNS TRIGGER AS $$
   BEGIN
